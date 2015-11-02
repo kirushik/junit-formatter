@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>README – JUnit Formatter v0.1.0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.10.0">
+    <link rel="stylesheet" href="dist/app.css" />
+    <script src="dist/sidebar_items.js"></script>
+  </head>
+  <body data-type="extras">
+
+<div class="main">
+<button class="sidebar-toggle">
+  <i class="icon-menu"></i>
+</button>
+<section class="sidebar">
+  <button class="sidebar-toggle">
+    <i class="icon-menu"></i>
+  </button>
+
+  
+  <a href="extra-readme.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+        JUnit Formatter
+      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.0
+      </h2>
+    </div>
+    
+  </a>
+
+  <div class="sidebar-search">
+    <i class="icon-search"></i>
+    <input type="text" class="sidebar-searchInput" placeholder="search" autocomplete="off" />
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+    
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+    
+
+    
+
+    
+  </ul>
+
+  <ul id="full-list" class="sidebar-fullList"></ul>
+  <div class="sidebar-noResults"></div>
+</section>
+
+<section class="content">
+  <div id="content" class="content-inner">
+
+
+<p><a href="https://travis-ci.org/victorolinasc/junit-formatter"><img src="https://travis-ci.org/victorolinasc/junit-formatter.svg" alt="Build Status"/></a></p>
+<h1>JUnit Output for ExUnit</h1>
+<p><strong>Work in progress</strong></p>
+<p>A simple ExUnit Formatter that collects test results and generates an xml report in JUnit format. This is intended to be used by tools that can produce a graphical report, mainly targeted at Jenkins and its support for JUnit.</p>
+<p>The report is generated in _build/test folder with a default filename of test-junit-report.xml. It can be configured through application configuration on the key report_file (application junit_formatter).</p>
+<p>Pictures and code examples will be added in a future release.</p>
+<h2 id="Usage"> Usage</h2><p>Add <a href="JUnitFormatter.html"><code class="inline">JUnitFormatter</code></a> to your <code class="inline">ExUnit</code> configuration in <code class="inline">test/test_helper.exs</code> file. It should look like this:</p>
+<pre><code class="elixir">ExUnit.configure formatters: [JUnitFormatter]
+ExUnit.start</code></pre>
+<p>If you want to keep using the default formatter alongside the <a href="JUnitFormatter.html"><code class="inline">JUnitFormatter</code></a> your <code class="inline">test/test_helper.exs</code> file should look like this:</p>
+<pre><code class="elixir">ExUnit.configure formatters: [JUnitFormatter, ExUnit.CLIFormatter]
+ExUnit.start</code></pre>
+<p>Then run your tests like normal:</p>
+<pre><code class="elixir">Compiled lib/formatter.ex
+Generated junit_formatter app
+....
+
+Finished in 0.1 seconds (0.07s on load, 0.08s on tests)
+4 tests, 0 failures
+
+Randomized with seed 600810</code></pre>
+<p>Your JUnit style XML report will be written to <code class="inline">_build/test/test-junit-report.xml</code>.  The report for this project looks like this:</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;testsuites&gt;
+    &lt;testsuite errors=&quot;0&quot; failures=&quot;0&quot; name=&quot;Elixir.FormatterTest&quot; tests=&quot;4&quot; time=&quot;82086&quot;&gt;
+        &lt;testcase classname=&quot;Elixir.FormatterTest&quot; name=&quot;test it counts raises as failures&quot; time=&quot;16805&quot;/&gt;
+        &lt;testcase classname=&quot;Elixir.FormatterTest&quot; name=&quot;test that an invalid test generates a proper report&quot; time=&quot;16463&quot;/&gt;
+        &lt;testcase classname=&quot;Elixir.FormatterTest&quot; name=&quot;test that a valid test generates a proper report&quot; time=&quot;16328&quot;/&gt;
+        &lt;testcase classname=&quot;Elixir.FormatterTest&quot; name=&quot;test valid and invalid tests generates a proper report&quot; time=&quot;32490&quot;/&gt;
+    &lt;/testsuite&gt;
+&lt;/testsuites&gt;</code></pre>
+<p><em>note: this example has been reformatted for readability.</em></p>
+
+    <footer class="footer">
+      <p>
+        <span class="line">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.10.0),
+        </span>
+        <span class="line">
+          designed by
+          <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+      </p>
+    </footer>
+  </div>
+</section>
+</div>
+    <script src="dist/app.js"></script>
+  </body>
+</html>
+
