@@ -135,7 +135,13 @@ defmodule JUnitFormatter do
 
     report = Application.get_env :junit_formatter, :report_file, "test-junit-report.xml"
     debug = Application.get_env :junit_formatter, :print_report_file, false
-    report_path = Mix.Project.app_path <> "/" <> report
+
+    umbrella_relative_path = Application.get_env :junit_formatter, :umbrella_relative_path, true
+    report_path = if umbrella_relative_path do
+     Path.join [Mix.Project.app_path, report]
+    else
+      report
+    end
     
     if debug,
       do: Logger.debug fn -> "Junit-formatter report at: #{report_path}" end
